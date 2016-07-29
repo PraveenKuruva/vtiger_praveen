@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Elements>
-	<Entry Key="HomePage.editBox_UserName" value="name@#@user_name" />
+	<!-- LoginPage -->
+	<Entry Key="LoginPage.editBox_UserName" value="name@#@user_name" />
+	<Entry Key="LoginPage.editBox_Password" value="name@#@user_password" />
+	<Entry Key="LoginPage.button_submit" value="name@#@Login" />
+
+
+
+
+	<!-- Home Page -->
+	<Entry Key="HomePage.txt_LandingText" value="cssSelector@#@.moduleName" />
+
+
+
+
+
+
+
+
 </Elements>

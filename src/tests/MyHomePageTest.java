@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import utils.ReadXMLConfigNodes_UIelement;
 import utils.VtigerUiElementActions;
 
 @Listeners({ utils.ScreenshotOnFailure.class })
@@ -15,31 +14,24 @@ public class MyHomePageTest extends VtigerUiElementActions {
 
 	@BeforeClass(alwaysRun = true)
 	public void launchPortal() {
-		new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
+		// new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
 		launchVtiger();
 		maximizeWindow();
 	}
 
 	@Test
 	public void verifySuccesfullLogin() throws InterruptedException {
-		click("HomePage.editBox_UserName");
-		driver.findElement(By.name("user_name")).click();
-		driver.findElement(By.name("user_name")).clear();
-		driver.findElement(By.name("user_name")).sendKeys("admin");
-		driver.findElement(By.name("user_password")).click();
-		driver.findElement(By.name("user_password")).clear();
-		driver.findElement(By.name("user_password")).sendKeys("admin");
-		driver.findElement(By.name("Login")).click();
+		click("LoginPage.editBox_UserName");
+		clear("LoginPage.editBox_UserName");
+		sendKeys("LoginPage.editBox_UserName", "admin");
+		click("LoginPage.editBox_Password");
+		clear("LoginPage.editBox_Password");
+		sendKeys("LoginPage.editBox_Password", "admin");
+		click("LoginPage.button_submit");
 		Thread.sleep(5000);
-		String expectedTextValue = "My Home Page > Home";
-		String actualTextValue = driver
-				.findElement(By.cssSelector(".moduleName")).getText().trim();
+		String expectedTextValue = "my home page > home";
+		String actualTextValue = getText("HomePage.txt_LandingText");
 		System.out.println("actualTextValue-->" + actualTextValue);
-		// boolean flag = false;
-		// if (actualTextValue.equalsIgnoreCase(expectedTextValue)) {
-		// flag = true;
-		// }
-		// Assert.assertTrue(flag, "Did login succesfully");
 		Assert.assertEquals(actualTextValue, expectedTextValue);
 		System.out.println("Logged in succesfully..");
 	}

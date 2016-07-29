@@ -11,7 +11,6 @@ import org.testng.Assert;
 
 import common.CommonBasePage;
 
-
 public class VtigerUiElementActions extends CommonBasePage {
 	WebElement element;
 	UIelementsXml_config uiele = new UIelementsXml_config();
@@ -79,8 +78,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	 * @param String
 	 * @return Boolean
 	 */
-	public boolean isElementDisplayed(String locator, String positiveMessage,
-			String negativeMessage) {
+	public boolean isElementDisplayed(String locator, String positiveMessage, String negativeMessage) {
 		boolean flag = false;
 		try {
 			element = uiele.getObjectFromXml(locator);
@@ -106,8 +104,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	 * @param String
 	 * @return Boolean
 	 */
-	public boolean isTextPresent(String locator, String positiveMessage,
-			String negativeMessage) {
+	public boolean isTextPresent(String locator, String positiveMessage, String negativeMessage) {
 		boolean flag = false;
 		try {
 			element = uiele.getObjectFromXml(locator);
@@ -137,8 +134,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 		try {
 			element = uiele.getObjectFromXml(locator);
 			testTriveBookedSucesfullymessage = element.getText();
-			System.out.println("test drive booked message--:"
-					+ testTriveBookedSucesfullymessage);
+			System.out.println("test drive booked message--:" + testTriveBookedSucesfullymessage);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -147,7 +143,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	}
 
 	/**
-	 * @author Saorabh: This method waits for the page to be loaded
+	 * @author This method waits for the page to be loaded
 	 * @param: long
 	 * @Param: final By
 	 * @param: WebDriver
@@ -167,17 +163,16 @@ public class VtigerUiElementActions extends CommonBasePage {
 	/**
 	 * @author Saorabh: this method checks for the visibility of the element
 	 *         specified.
-	 * @param : final By
+	 * @param :
+	 *            final By
 	 * @return : boolean
 	 * 
 	 */
-	public static ExpectedCondition<Boolean> visibilityOfElementLocated(
-			final WebElement element2) {
+	public static ExpectedCondition<Boolean> visibilityOfElementLocated(final WebElement element2) {
 		return new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
 				boolean toReturn = element2.isDisplayed();
-				System.out.println("Element" + element2 + " is Displayed  :: "
-						+ toReturn);
+				System.out.println("Element" + element2 + " is Displayed  :: " + toReturn);
 				if (toReturn) {
 					return toReturn;
 				}
@@ -188,7 +183,8 @@ public class VtigerUiElementActions extends CommonBasePage {
 
 	/**
 	 * @author vinodkn: --Clicks on the random item in the list
-	 * @param int index
+	 * @param int
+	 *            index
 	 * @param String
 	 * 
 	 */
@@ -220,12 +216,10 @@ public class VtigerUiElementActions extends CommonBasePage {
 			element = uiele.getObjectFromXml(locator);
 			element.sendKeys(keyData);
 			// navigateBack();
-			System.out.println("Enter text   " + keyData + "  at locator   "
-					+ locator);
+			System.out.println("Enter text   " + keyData + "  at locator   " + locator);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Assert.fail("did not do the type operation.." + "Key data is:"
-					+ keyData);
+			Assert.fail("did not do the type operation.." + "Key data is:" + keyData);
 		}
 	}
 
