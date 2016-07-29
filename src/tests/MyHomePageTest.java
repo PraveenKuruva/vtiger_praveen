@@ -6,18 +6,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.MyHomePage;
+import utils.ReadXMLConfigNodes_UIelement;
+import utils.VtigerUiElementActions;
 
-public class MyHomePageTest extends MyHomePage {
+public class MyHomePageTest extends VtigerUiElementActions {
 
 	@BeforeClass(alwaysRun = true)
 	public void launchPortal() {
+		new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
 		launchVtiger();
 		maximizeWindow();
 	}
 
 	@Test
 	public void verifySuccesfullLogin() throws InterruptedException {
+		click("HomePage.editBox_UserName");
 		driver.findElement(By.name("user_name")).click();
 		driver.findElement(By.name("user_name")).clear();
 		driver.findElement(By.name("user_name")).sendKeys("admin");
