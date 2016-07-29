@@ -11,10 +11,6 @@ import org.testng.Assert;
 
 import common.CommonBasePage;
 
-/**
- * @company Gozoomo.com
- * @author vinodkn
- */
 
 public class VtigerUiElementActions extends CommonBasePage {
 	WebElement element;
