@@ -27,7 +27,8 @@ public class MyHomePageTest extends MyHomePage {
 		driver.findElement(By.name("Login")).click();
 		Thread.sleep(5000);
 		String expectedTextValue = "My Home Page > Home";
-		String actualTextValue = driver.findElement(By.cssSelector(".moduleName")).getText().trim();
+		String actualTextValue = driver
+				.findElement(By.cssSelector(".moduleName")).getText().trim();
 		System.out.println("actualTextValue-->" + actualTextValue);
 		// boolean flag = false;
 		// if (actualTextValue.equalsIgnoreCase(expectedTextValue)) {
@@ -36,6 +37,11 @@ public class MyHomePageTest extends MyHomePage {
 		// Assert.assertTrue(flag, "Did login succesfully");
 		Assert.assertEquals(actualTextValue, expectedTextValue);
 		System.out.println("Logged in succesfully..");
+	}
+
+	@Test
+	public void testing() {
+		System.out.println("Testing..");
 	}
 
 	@AfterClass(alwaysRun = true)
