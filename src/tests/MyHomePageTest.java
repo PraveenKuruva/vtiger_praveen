@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import utils.ReadXMLConfigNodes_UIelement;
 import utils.VtigerUiElementActions;
 
+@Listeners({ utils.ScreenshotOnFailure.class })
 public class MyHomePageTest extends VtigerUiElementActions {
 
 	@BeforeClass(alwaysRun = true)

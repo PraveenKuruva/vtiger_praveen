@@ -3,8 +3,9 @@ package common;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.TestListenerAdapter;
 
-public class CommonBasePage {
+public class CommonBasePage extends TestListenerAdapter {
 
 	public static WebDriver driver;
 	private final String URL = "http://localhost:8888/";
@@ -27,6 +28,5 @@ public class CommonBasePage {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(" + X + "," + Y + ")", "");
 	}
-	
-	
+
 }
