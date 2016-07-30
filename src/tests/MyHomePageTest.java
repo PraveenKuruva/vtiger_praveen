@@ -7,38 +7,24 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import utils.VtigerUiElementActions;
+import pages.MyHomePage;
 
 @Listeners({ utils.ScreenshotOnFailure.class })
-public class MyHomePageTest extends VtigerUiElementActions {
+public class MyHomePageTest extends MyHomePage {
 
 	@BeforeClass(alwaysRun = true)
-	public void launchPortal() {
+	public void launchPortal() throws InterruptedException {
 		// new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
 		launchVtiger();
 		maximizeWindow();
+		loginToPortal();
 	}
 
-	@Test
+	@Test(priority = 0)
 	public void verifySuccesfullLogin() throws InterruptedException {
-		click("LoginPage.editBox_UserName");
-		clear("LoginPage.editBox_UserName");
-		sendKeys("LoginPage.editBox_UserName", "admin");
-		click("LoginPage.editBox_Password");
-		clear("LoginPage.editBox_Password");
-		sendKeys("LoginPage.editBox_Password", "admin");
-		click("LoginPage.button_submit");
-		Thread.sleep(5000);
-		String expectedTextValue = "my home page > home";
-		String actualTextValue = getText("HomePage.txt_LandingText");
-		System.out.println("actualTextValue-->" + actualTextValue);
-		Assert.assertEquals(actualTextValue, expectedTextValue);
-		System.out.println("Logged in succesfully..");
-	}
-
-	@Test
-	public void testing() {
-		System.out.println("Testing..");
+		driver.findElement(By.xpath("//a[text()='Sign Out']")).click();
+		Assert.assertTrue(loginToPortal(), "Login is unsuccessfull");
+		System.out.println("Login is successfull.");
 	}
 
 	@AfterClass(alwaysRun = true)

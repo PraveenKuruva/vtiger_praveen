@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -267,6 +268,33 @@ public class VtigerUiElementActions extends CommonBasePage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//
+	}
+
+	public void SelectByVisibleText(String locator, String visibleText) throws InterruptedException {
+		try {
+			element = uiele.getObjectFromXml(locator);
+			Select select = new Select(element);
+			select.selectByVisibleText(visibleText);
+			System.out.println("Selected :" + visibleText + " From select box");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Did not Selected :" + visibleText + " From select box");
+		}
+	}
+
+	public void SelectByIndex(String locator, int index) throws InterruptedException {
+		try {
+			element = uiele.getObjectFromXml(locator);
+			Select select = new Select(element);
+			select.selectByIndex(index);
+			System.out.println("Selected :" + index + " From select box");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Did not Selected :" + index + " From select box");
+		}
 
 	}
+
 }
