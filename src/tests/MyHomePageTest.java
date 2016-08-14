@@ -7,46 +7,24 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import utils.ReadXMLConfigNodes_UIelement;
-import utils.VtigerUiElementActions;
+import pages.MyHomePage;
 
 @Listeners({ utils.ScreenshotOnFailure.class })
-public class MyHomePageTest extends VtigerUiElementActions {
+public class MyHomePageTest extends MyHomePage {
 
 	@BeforeClass(alwaysRun = true)
-	public void launchPortal() {
-		new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
+	public void launchPortal() throws InterruptedException {
+		// new ReadXMLConfigNodes_UIelement("resources\\vtigerLocators.xml");
 		launchVtiger();
 		maximizeWindow();
+		loginToPortal();
 	}
 
-	@Test
+	@Test(priority = 0)
 	public void verifySuccesfullLogin() throws InterruptedException {
-		click("HomePage.editBox_UserName");
-		driver.findElement(By.name("user_name")).click();
-		driver.findElement(By.name("user_name")).clear();
-		driver.findElement(By.name("user_name")).sendKeys("admin");
-		driver.findElement(By.name("user_password")).click();
-		driver.findElement(By.name("user_password")).clear();
-		driver.findElement(By.name("user_password")).sendKeys("admin");
-		driver.findElement(By.name("Login")).click();
-		Thread.sleep(5000);
-		String expectedTextValue = "My Home Page > Home";
-		String actualTextValue = driver
-				.findElement(By.cssSelector(".moduleName")).getText().trim();
-		System.out.println("actualTextValue-->" + actualTextValue);
-		// boolean flag = false;
-		// if (actualTextValue.equalsIgnoreCase(expectedTextValue)) {
-		// flag = true;
-		// }
-		// Assert.assertTrue(flag, "Did login succesfully");
-		Assert.assertEquals(actualTextValue, expectedTextValue);
-		System.out.println("Logged in succesfully..");
-	}
-
-	@Test
-	public void testing() {
-		System.out.println("Testing..");
+		driver.findElement(By.xpath("//a[text()='Sign Out']")).click();
+		Assert.assertTrue(loginToPortal(), "Login is unsuccessfull");
+		System.out.println("Login is successfull.");
 	}
 
 	@AfterClass(alwaysRun = true)

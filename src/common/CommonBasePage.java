@@ -3,6 +3,7 @@ package common;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.TestListenerAdapter;
 
 public class CommonBasePage extends TestListenerAdapter {
@@ -28,5 +29,8 @@ public class CommonBasePage extends TestListenerAdapter {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(" + X + "," + Y + ")", "");
 	}
+	
+	
+	
 
 }

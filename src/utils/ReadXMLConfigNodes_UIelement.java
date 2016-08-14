@@ -22,12 +22,14 @@ public class ReadXMLConfigNodes_UIelement {
 		String attributeName;
 		try {
 			// File fXmlFile = new File("resources\\UIelements.xml");
-			File fXmlFile = new File(uiElementsFilePath);
+			// File fXmlFile = new File(uiElementsFilePath);
+
+			File fXmlFile = new File("C:\\Users\\welcome\\git\\vtiger_praveen\\src\\resources\\vtigerLocators.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
-//			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("Entry");
 			// System.out.println("nLists:" + nList.getLength());
 			System.out.println("----------------------------");
@@ -46,7 +48,7 @@ public class ReadXMLConfigNodes_UIelement {
 					}
 				}
 			}
-//			System.out.println("attribute value:" + attributeValue);
+			// System.out.println("attribute value:" + attributeValue);
 			return attributeValue;
 		} catch (Exception e) {
 			e.printStackTrace();

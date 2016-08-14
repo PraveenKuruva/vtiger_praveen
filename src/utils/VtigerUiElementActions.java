@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import common.CommonBasePage;
-
 
 public class VtigerUiElementActions extends CommonBasePage {
 	WebElement element;
@@ -79,8 +79,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	 * @param String
 	 * @return Boolean
 	 */
-	public boolean isElementDisplayed(String locator, String positiveMessage,
-			String negativeMessage) {
+	public boolean isElementDisplayed(String locator, String positiveMessage, String negativeMessage) {
 		boolean flag = false;
 		try {
 			element = uiele.getObjectFromXml(locator);
@@ -106,8 +105,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	 * @param String
 	 * @return Boolean
 	 */
-	public boolean isTextPresent(String locator, String positiveMessage,
-			String negativeMessage) {
+	public boolean isTextPresent(String locator, String positiveMessage, String negativeMessage) {
 		boolean flag = false;
 		try {
 			element = uiele.getObjectFromXml(locator);
@@ -137,8 +135,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 		try {
 			element = uiele.getObjectFromXml(locator);
 			testTriveBookedSucesfullymessage = element.getText();
-			System.out.println("test drive booked message--:"
-					+ testTriveBookedSucesfullymessage);
+			System.out.println("test drive booked message--:" + testTriveBookedSucesfullymessage);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -147,7 +144,7 @@ public class VtigerUiElementActions extends CommonBasePage {
 	}
 
 	/**
-	 * @author Saorabh: This method waits for the page to be loaded
+	 * @author This method waits for the page to be loaded
 	 * @param: long
 	 * @Param: final By
 	 * @param: WebDriver
@@ -167,17 +164,16 @@ public class VtigerUiElementActions extends CommonBasePage {
 	/**
 	 * @author Saorabh: this method checks for the visibility of the element
 	 *         specified.
-	 * @param : final By
+	 * @param :
+	 *            final By
 	 * @return : boolean
 	 * 
 	 */
-	public static ExpectedCondition<Boolean> visibilityOfElementLocated(
-			final WebElement element2) {
+	public static ExpectedCondition<Boolean> visibilityOfElementLocated(final WebElement element2) {
 		return new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
 				boolean toReturn = element2.isDisplayed();
-				System.out.println("Element" + element2 + " is Displayed  :: "
-						+ toReturn);
+				System.out.println("Element" + element2 + " is Displayed  :: " + toReturn);
 				if (toReturn) {
 					return toReturn;
 				}
@@ -188,7 +184,8 @@ public class VtigerUiElementActions extends CommonBasePage {
 
 	/**
 	 * @author vinodkn: --Clicks on the random item in the list
-	 * @param int index
+	 * @param int
+	 *            index
 	 * @param String
 	 * 
 	 */
@@ -220,12 +217,10 @@ public class VtigerUiElementActions extends CommonBasePage {
 			element = uiele.getObjectFromXml(locator);
 			element.sendKeys(keyData);
 			// navigateBack();
-			System.out.println("Enter text   " + keyData + "  at locator   "
-					+ locator);
+			System.out.println("Enter text   " + keyData + "  at locator   " + locator);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Assert.fail("did not do the type operation.." + "Key data is:"
-					+ keyData);
+			Assert.fail("did not do the type operation.." + "Key data is:" + keyData);
 		}
 	}
 
@@ -273,6 +268,33 @@ public class VtigerUiElementActions extends CommonBasePage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//
+	}
+
+	public void SelectByVisibleText(String locator, String visibleText) throws InterruptedException {
+		try {
+			element = uiele.getObjectFromXml(locator);
+			Select select = new Select(element);
+			select.selectByVisibleText(visibleText);
+			System.out.println("Selected :" + visibleText + " From select box");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Did not Selected :" + visibleText + " From select box");
+		}
+	}
+
+	public void SelectByIndex(String locator, int index) throws InterruptedException {
+		try {
+			element = uiele.getObjectFromXml(locator);
+			Select select = new Select(element);
+			select.selectByIndex(index);
+			System.out.println("Selected :" + index + " From select box");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Did not Selected :" + index + " From select box");
+		}
 
 	}
+
 }

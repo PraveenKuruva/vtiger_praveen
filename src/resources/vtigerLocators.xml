@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Elements>
-	<Entry Key="HomePage.editBox_UserName" value="name@#@user_name" />
+	<!-- LoginPage -->
+	<Entry Key="LoginPage.editBox_UserName" value="name@#@user_name" />
+	<Entry Key="LoginPage.editBox_Password" value="name@#@user_password" />
+	<Entry Key="LoginPage.button_submit" value="name@#@Login" />
+
+
+
+
+	<!-- Home Page -->
+	<Entry Key="HomePage.txt_LandingText" value="cssSelector@#@.moduleName" />
+	<Entry Key="HomePage.link_Text_Marketing" value="linkText@#@Marketing" />
+	<Entry Key="Marketingpage.link_Text_Campaigns" value="linkText@#@Campaigns" />
+	<Entry Key="Marketingpage.img_Campaigns_Create" value="xpath@#@//img[@alt='Create Campaign...']" />
+	<Entry Key="Marketingpage.editBox_Campaign_Name" value="xpath@#@//input[@name='campaignname']" />
+	<Entry Key="Marketingpage.textarea_Description" value="xpath@#@//textarea[@name='description']" />
+	<Entry Key="Marketingpage.button_save" value="xpath@#@//input[@class='crmbutton small save']" />
+
+
+	<Entry Key="Marketingpage.select_campaignType" value="xpath@#@//select[@name='campaigntype']" />
+
+
+
+
+
 </Elements>
